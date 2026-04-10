@@ -5,7 +5,7 @@ import OrangeLogin from '../Pages/OrangeLogin.page.js'
 import clickPIM from '../Pages/clickPIM.page.js'
 import PIMAddEmpLink from '../Pages/PIMAddEmpLink.page.js'
 import addEmpPg from '../Pages/addEmpPg.page.js'
-import EmpList from '../Pages/EmpList.page.js'
+import EmpDetailsPage from '../Pages/EmpDetailsPage.page.js'
 
 import EmpDetails from '../TestData/EmpDetails.json'
 
@@ -38,7 +38,7 @@ test("Orange Hrm",async ({page}) => {
     let PIMClickPage = new clickPIM(page)
     let addrsLinkPage = new PIMAddEmpLink(page)
     let addEmpPage = new addEmpPg(page)
-    let EmpDetailsPage = new EmpList(page)
+    let EmpDetailsPage = new EmpDetailsPage(page)
 
     await page.goto(OrangeURL)
     await LoginDetailsPage.LoginTF.fill(OrangeLoginD)
@@ -50,26 +50,26 @@ test("Orange Hrm",async ({page}) => {
     await addrsLinkPage.addEmployee.click()
 
     await addEmpPage.addName.fill(EmpFullName)
-    await addEmpPg.addMiddleName.fill(MiddleName)
-    await addEmpPg.lastName.fill(LastName)
-    await addEmpPg.EmpId.fill(empID)
-    await addEmpPg.saveBTN.click()
+    await addEmpPage.addMiddleName.fill(MiddleName)
+    await addEmpPage.lastName.fill(LastName)
+    await addEmpPage.EmpId.fill(empID)
+    await addEmpPage.saveBTN.click()
 
-    await EmpList.OtherIdTF.fill(otherID)
-    await EmpList.DriverLicenseNoTF.fill(DriverLicenseNo)
-    await EmpList.LicenseExpDate.fill(LicenseExpDt)
-    await EmpList.NationalityDrpDwn.fill("Indian")
-    await EmpList.MaritalStatusdrpDwn.fill("Married")
-    await EmpList.DOBDrpDwn.fill(DOBDt)
-    await EmpList.GenderDrpDwn.fill("Female")
-    await EmpList.militaryTF.fill("No")
-    await EmpList.SmokeCheckBox.fill("No")
-    await EmpList.SaveBtn1.click()
-    await EmpList.BloodTypeDrpDwn("A+")
-    await EmpList.TestFieldTF.fill(TextField)
-    await EmpList.TestCustomTF.fill(TextCustomField)
-    await EmpList.SaveBtn2.click()
-    await EmpList.attachmentsAdd.click()
-    await EmpList.uploadFile('my-first-project/DownloadFiles/sample.pdf')
+    await EmpDetailsPage.OtherIdTF.fill(otherID)
+    await EmpDetailsPage.DriverLicenseNoTF.fill(DriverLicenseNo)
+    await EmpDetailsPage.LicenseExpDate.fill(LicenseExpDt)
+    await EmpDetailsPage.NationalityDrpDwn.fill("Indian")
+    await EmpDetailsPage.MaritalStatusdrpDwn.fill("Married")
+    await EmpDetailsPage.DOBDrpDwn.fill(DOBDt)
+    await EmpDetailsPage.GenderDrpDwn.fill("Female")
+    await EmpDetailsPage.militaryTF.fill("No")
+    await EmpDetailsPage.SmokeCheckBox.fill("No")
+    await EmpDetailsPage.SaveBtn1.click()
+    await EmpDetailsPage.BloodTypeDrpDwn.fill("A+")
+    await EmpDetailsPage.TestFieldTF.fill(TextField)
+    await EmpDetailsPage.TestCustomTF.fill(TextCustomField)
+    await EmpDetailsPage.SaveBtn2.click()
+    await EmpDetailsPage.attachmentsAdd.click()
+    await EmpDetailsPage.uploadFile('my-first-project/DownloadFiles/sample.pdf')
   
 })

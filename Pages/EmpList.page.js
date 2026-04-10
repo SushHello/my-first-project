@@ -27,3 +27,4 @@ class empList{
     }
 }
 
+export default empList

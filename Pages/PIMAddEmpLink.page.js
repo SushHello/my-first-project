@@ -3,3 +3,4 @@ class addEmployee {nk
         this.addEmployee = page.getByRole('link',{name:'Add Employee'})
     }
 }
+export default addEmployee

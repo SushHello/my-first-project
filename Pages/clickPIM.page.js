@@ -3,3 +3,4 @@ class clickPIM{
         this.clickBTN = page.getByText('PIM',{exact: true})
     }
 }
+export default clickPIM

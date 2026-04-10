@@ -7,3 +7,4 @@ class addEmpDetails {
         this.saveBTN = page.locator("//button[@type='submit']")
     }
 }
+export default addEmpDetails

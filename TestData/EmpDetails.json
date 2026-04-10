@@ -1,0 +1,18 @@
+{
+    "url" : "https://opensource-demo.orangehrmlive.com/",
+    "usrname" : "Admin",
+    "passwrd" : "admin123",
+    "EmpFullName" : "God",
+    "MiddleName" : "God1",
+    "LastName" : "God3",
+    "empID" : "12",
+    "otherID" : "123",
+    "DriverLicenseNo": "123",
+    "LicenseExpDt" : "07-04-2029",
+    "DOBDt" : "07-04-1988",
+    "MilitaryService":"No",
+    "MaritalStatusD" : "No",
+    "TextCustomField":"ABC",
+    "TextField":"CDE",
+    "Cmnt":"Thank you" 
+}

@@ -13,7 +13,7 @@ class empList {
         this.MaritalStatusdrpDwn = page.locator("//label[text()='Marital Status']/following::div[contains(@class,'oxd-select-text-input')][1]");
         this.MaritalStatusOption = (value) => page.getByRole('option', { name: value });
 
-        this.DOBDrpDwn = page.locator("//label[text()='Date of Birth']/following::input[@placeholder='yyyy-dd-mm']");
+        this.DOBDrpDwn = page.locator("//label[text()='Date of Birth']/following::input[1]");
 
         this.genderFemale = page.locator('//label[text()="Female"]/ancestor::div[contains(@class,"oxd-radio-wrapper")]')
         this.genderMale = page.getByLabel('//label[text()="Male"]/ancestor::div[contains(@class,"oxd-radio-wrapper")]');
@@ -59,6 +59,11 @@ class empList {
         await this.CommentTF.fill('Uploading File');
         await this.SaveBtn3.click();
     }
+
+    async waitForLoader() {
+    await this.page.waitForSelector('.oxd-form-loader', { state: 'detached' });
+}
+
 }
 
 export default empList;

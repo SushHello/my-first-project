@@ -55,6 +55,8 @@ test("Orange Hrm",async ({page}) => {
     await addEmpPage.lastName.fill(OrangeLname)
     await addEmpPage.EmpId.fill(OrangeempID)
     await addEmpPage.saveBTN.click()
+    await EmpDetailsPage.waitForLoader();
+
 
 await EmpDetailsPage.OtherIdTF.fill(OrangeOtherID);
 await EmpDetailsPage.DriverLicenceNoTF.fill("12365");
@@ -73,9 +75,13 @@ await EmpDetailsPage.selectGender("Female");
 // await EmpDetailsPage.SmokeCheckBox.check();
 
 await EmpDetailsPage.SaveBtn1.click();
+await EmpDetailsPage.waitForLoader();
+
 
 await EmpDetailsPage.selectBloodType("A+");
 await EmpDetailsPage.TestFieldTF.fill(OrangeTextField);
 //await EmpDetailsPage.TestCustomTF.fill(OrangeTextCustom);
 await EmpDetailsPage.SaveBtn2.click();
+await EmpDetailsPage.waitForLoader();
+
 })

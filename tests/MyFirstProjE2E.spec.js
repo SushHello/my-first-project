@@ -5,7 +5,7 @@ import OrangeLogin from '../Pages/OrangeLogin.page.js'
 import clickPIM from '../Pages/clickPIM.page.js'
 import PIMAddEmpLink from '../Pages/PIMAddEmpLink.page.js'
 import addEmpPg from '../Pages/addEmpPg.page.js'
-import EmpDetailsPage from '../Pages/EmpDetailsPage.page.js'
+import EmpList from '../Pages/EmpList.page.js'
 
 import EmpDetails from '../TestData/EmpDetails.json'
 
@@ -27,8 +27,9 @@ test("Orange Hrm",async ({page}) => {
     let OrangeempID = EmpDetails.empID
     let OrangeOtherID = EmpDetails.otherID
     let OrangeDriverLicense = EmpDetails.DriverLicenseNo
-    let OrangeLicenseExDate = EmpDetails.LicenseExpDate
-    let OrangeMilitary = EmpDetails.MilitaryService
+    //let OrangeLicenseExDate = EmpDetails.LicenseExpDate
+    //let OrangeDOB = EmpDetails.DOBDt
+    //let OrangeMilitary = EmpDetails.MilitaryService
     let OrangeTextCustom = EmpDetails.TextCustomField
     let OrangeTextField = EmpDetails.TextField
     let OrangeCmnt = EmpDetails.Cmnt
@@ -38,7 +39,7 @@ test("Orange Hrm",async ({page}) => {
     let PIMClickPage = new clickPIM(page)
     let addrsLinkPage = new PIMAddEmpLink(page)
     let addEmpPage = new addEmpPg(page)
-    let EmpDetailsPage = new EmpDetailsPage(page)
+    let EmpDetailsPage = new EmpList(page)
 
     await page.goto(OrangeURL)
     await LoginDetailsPage.LoginTF.fill(OrangeLoginD)
@@ -49,27 +50,32 @@ test("Orange Hrm",async ({page}) => {
 
     await addrsLinkPage.addEmployee.click()
 
-    await addEmpPage.addName.fill(EmpFullName)
-    await addEmpPage.addMiddleName.fill(MiddleName)
-    await addEmpPage.lastName.fill(LastName)
-    await addEmpPage.EmpId.fill(empID)
+    await addEmpPage.addName.fill(OrangeFname)
+    await addEmpPage.addMiddleName.fill(OrangeMname)
+    await addEmpPage.lastName.fill(OrangeLname)
+    await addEmpPage.EmpId.fill(OrangeempID)
     await addEmpPage.saveBTN.click()
 
-    await EmpDetailsPage.OtherIdTF.fill(otherID)
-    await EmpDetailsPage.DriverLicenseNoTF.fill(DriverLicenseNo)
-    await EmpDetailsPage.LicenseExpDate.fill(LicenseExpDt)
-    await EmpDetailsPage.NationalityDrpDwn.fill("Indian")
-    await EmpDetailsPage.MaritalStatusdrpDwn.fill("Married")
-    await EmpDetailsPage.DOBDrpDwn.fill(DOBDt)
-    await EmpDetailsPage.GenderDrpDwn.fill("Female")
-    await EmpDetailsPage.militaryTF.fill("No")
-    await EmpDetailsPage.SmokeCheckBox.fill("No")
-    await EmpDetailsPage.SaveBtn1.click()
-    await EmpDetailsPage.BloodTypeDrpDwn.fill("A+")
-    await EmpDetailsPage.TestFieldTF.fill(TextField)
-    await EmpDetailsPage.TestCustomTF.fill(TextCustomField)
-    await EmpDetailsPage.SaveBtn2.click()
-    await EmpDetailsPage.attachmentsAdd.click()
-    await EmpDetailsPage.uploadFile('my-first-project/DownloadFiles/sample.pdf')
-  
+await EmpDetailsPage.OtherIdTF.fill(OrangeOtherID);
+await EmpDetailsPage.DriverLicenceNoTF.fill("12365");
+await EmpDetailsPage.LicenceExpDate.fill("2029-04-07");
+
+await EmpDetailsPage.selectNationality("Indian");
+await EmpDetailsPage.selectMaritalStatus("Married");
+
+await EmpDetailsPage.DOBDrpDwn.fill("1988-07-04");
+
+// await EmpDetailsPage.GenderDrpDwn.check();
+await EmpDetailsPage.selectGender("Female");
+
+
+// await EmpDetailsPage.militaryTF.fill("No");
+// await EmpDetailsPage.SmokeCheckBox.check();
+
+await EmpDetailsPage.SaveBtn1.click();
+
+await EmpDetailsPage.selectBloodType("A+");
+await EmpDetailsPage.TestFieldTF.fill(OrangeTextField);
+//await EmpDetailsPage.TestCustomTF.fill(OrangeTextCustom);
+await EmpDetailsPage.SaveBtn2.click();
 })
